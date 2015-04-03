@@ -26,12 +26,16 @@
 			</nav>
 
 			<div>
-				<form method="post" action="api.php/image">
+				<form enctype="multipart/form-data" method="post" action="api.php/uploads">
 					<input name="name_img" type="text" />
 					<br />
 					<input name="storage_img" type="text" />
 					<br />
 					<input name="dt_img" type="text" />
+					<br />
+					<input type="hidden" name="MAX_FILE_SIZE" value="300000" />
+					
+					<input type="file" name="image" />
 					<br/>
 					<input type="submit" />
 				</form>

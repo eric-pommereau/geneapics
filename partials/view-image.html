@@ -1,0 +1,43 @@
+<form name="imageForm" novalidate >
+	<fieldset>
+		<label>Image ({{image.id}})</label>
+		<div>
+			<div>
+				<input type="text" name="NAME_IMG" ng-model="image.NAME_IMG" required/>
+				<span style="color:red" ng-show="imageForm.NAME_IMG.$error.required">Nom de l'image requise </span>
+			</div>
+
+			<div>
+				<input type="text" name="STORAGE_IMG" ng-model="image.STORAGE_IMG" />
+				<span ng-show="imageForm.STORAGE_IMG.$error.required">Storage requis</span>
+			</div>
+			<div>
+				<input type="text" name="DT_START_IMG" ng-model="image.DT_START_IMG" />
+			</div>
+			<br />
+			<div>
+				<input type="file" file-upload multiple/>
+			    <ul>
+			        <li ng-repeat="file in files">{{file.name}}</li>
+			    </ul>
+			</div>
+						
+			<div>
+				<button ng-click="update()" ng-disabled="imageForm.$invalid">
+					Mettre à jour
+				</button>
+				&nbsp;
+				<button ng-click="submitForm()" ng-disabled="imageForm.$invalid">
+					Valider
+				</button>
+				
+				
+				<!-- pour slim / REST -->
+				<input type="hidden" name="_METHOD" value="PUT"/>
+				&nbsp;
+				<input type="button" ng-click="reset()" value="Reset" />
+			</div>
+		</div>
+		<pre>form = {{image | json}}</pre>
+	</fieldset>
+</form>
